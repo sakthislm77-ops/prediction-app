@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Prediction</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background:black;color:white;text-align:center">
+
+<h2>Prediction Engine</h2>
+<button onclick="go()">GET</button>
+<div id="out">---</div>
+
+<script>
+async function go(){
+  const r = await fetch("https://YOUR-BACKEND-URL.onrender.com/predict");
+  const d = await r.json();
+  out.innerHTML =
+    "Period: "+d.period.slice(-5)+"<br>"+
+    "Prediction: "+d.prediction+"<br>"+
+    "Confidence: "+d.confidence+"%";
+}
+</script>
+
+</body>
+</html>
